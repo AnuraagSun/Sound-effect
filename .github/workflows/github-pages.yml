@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Set this to your default branch name if it's different
+      - main
 
 jobs:
   deploy:
@@ -14,32 +14,26 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # You can specify a different Node.js version if needed
+        node-version: '14'
 
     - name: Install Dependencies
       run: |
         npm install -g http-server
-
-    - name: Build
-      run: |
-        # Add any build steps here if needed
-        # For example: npm run build
 
     - name: Deploy
       run: |
         git config --global user.name ${{ github.actor }}
         git config --global user.email ${{ github.actor }}@users.noreply.github.com
         git checkout --orphan gh-pages
-        git rm -rf .
-        mv * .github/workflows .
-        mv .github/workflows/* .
-        rm -rf .github
-        echo "time-interval-sound-effect.yourdomain.com" > CNAME  # Replace with your custom domain if you have one
-        git add -A
-        git commit -m "Deploy to GitHub Pages"
-        git push -f origin gh-pages
-
-    - name: Cleanup
-      run: |
+        git --work-tree . add --all
+        git --work-tree . commit -m "Deploy to GitHub Pages"
+        git push origin HEAD:gh-pages --force
+        rm -rf .git
         git checkout main
         git branch -D gh-pages
+
+    - name: Cleanup
+      if: always()
+      run: |
+        git checkout main || true
+        git branch -D gh-pages || true
