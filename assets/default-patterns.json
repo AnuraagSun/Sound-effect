@@ -1,0 +1,58 @@
+{
+  "patterns": [
+    {
+      "name": "Simple Tick",
+      "description": "A basic tick every second",
+      "pattern": [1000]
+    },
+    {
+      "name": "Heartbeat",
+      "description": "Mimics a heartbeat rhythm",
+      "pattern": [200, 400, 200, 1200]
+    },
+    {
+      "name": "Morse SOS",
+      "description": "SOS signal in Morse code",
+      "pattern": [
+        100, 100, 100, 100, 100, 300,
+        300, 100, 300, 100, 300, 300,
+        100, 100, 100, 100, 100, 700
+      ]
+    },
+    {
+      "name": "Waltz Time",
+      "description": "3/4 time signature",
+      "pattern": [500, 250, 250]
+    },
+    {
+      "name": "Pomodoro",
+      "description": "25 minutes work, 5 minutes break",
+      "pattern": [1500000, 300000]
+    },
+    {
+      "name": "Breathing Exercise",
+      "description": "4-7-8 breathing technique",
+      "pattern": [4000, 7000, 8000]
+    },
+    {
+      "name": "Rapid Clicks",
+      "description": "Quick succession of clicks",
+      "pattern": [50, 50, 50, 50, 800]
+    },
+    {
+      "name": "Slow Fade",
+      "description": "Gradually increasing intervals",
+      "pattern": [100, 200, 400, 800, 1600]
+    },
+    {
+      "name": "Random Rhythm",
+      "description": "A mix of short and long intervals",
+      "pattern": [100, 300, 200, 600, 150, 450, 700]
+    },
+    {
+      "name": "Meditation Bell",
+      "description": "Long intervals for deep focus",
+      "pattern": [60000, 120000, 180000]
+    }
+  ]
+}
