@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Interval Sound Effect Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Time-Interval Sound Effect</h1>
+        <div class="input-group">
+            <input type="number" id="intervalValue" min="0" step="any" placeholder="Interval">
+            <select id="intervalUnit">
+                <option value="3600">Hours</option>
+                <option value="60">Minutes</option>
+                <option value="1">Seconds</option>
+                <option value="0.1">Deciseconds</option>
+                <option value="0.01">Centiseconds</option>
+                <option value="0.001">Milliseconds</option>
+                <option value="0.000001">Microseconds</option>
+                <option value="0.000000001">Nanoseconds</option>
+                <option value="0.000000000001">Picoseconds</option>
+                <option value="0.000000000000001">Femtoseconds</option>
+                <option value="0.000000000000000001">Attoseconds</option>
+                <option value="0.000000000000000000001">Zeptoseconds</option>
+                <option value="0.000000000000000000000001">Yoctoseconds</option>
+            </select>
+        </div>
+        <div class="controls">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+        </div>
+        <div id="countdown"></div>
+        <div id="accuracyWarning" class="warning"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
