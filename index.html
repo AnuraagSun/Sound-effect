@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time-Interval Sound Effect Web App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
 </head>
 <body>
     <div class="container">
@@ -33,7 +35,63 @@
         </div>
         <div id="countdown"></div>
         <div id="accuracyWarning" class="warning"></div>
+        
+        <div class="advanced-features">
+            <h2>Advanced Features</h2>
+            <div class="feature">
+                <h3>Custom Sound Upload</h3>
+                <input type="file" id="soundUpload" accept=".mp3,.wav,.ogg">
+            </div>
+            <div class="feature">
+                <h3>Tone Generator</h3>
+                <select id="waveType">
+                    <option value="sine">Sine</option>
+                    <option value="square">Square</option>
+                    <option value="triangle">Triangle</option>
+                    <option value="sawtooth">Sawtooth</option>
+                </select>
+                <input type="number" id="frequency" min="20" max="20000" value="440" placeholder="Frequency (Hz)">
+                <input type="number" id="duration" min="0.01" max="1" step="0.01" value="0.1" placeholder="Duration (s)">
+            </div>
+            <div class="feature">
+                <h3>Pattern Editor</h3>
+                <textarea id="patternEditor" placeholder="Enter pattern (e.g., [tick, tick, tock] or [100, 200, 100])"></textarea>
+            </div>
+            <div class="feature">
+                <h3>Accuracy Monitor</h3>
+                <canvas id="accuracyGraph"></canvas>
+                <div id="averageDrift"></div>
+            </div>
+            <div class="feature">
+                <h3>Log Export</h3>
+                <button id="exportLog">Export CSV</button>
+            </div>
+            <div class="feature">
+                <h3>Settings</h3>
+                <button id="toggleDarkMode">Toggle Dark Mode</button>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+                <label for="volumeControl">Volume</label>
+                <button id="exportSettings">Export Settings</button>
+                <input type="file" id="importSettings" accept=".json">
+                <label for="importSettings">Import Settings</label>
+            </div>
+        </div>
     </div>
+    <script src="settings.js"></script>
+    <script src="pattern-editor.js"></script>
+    <script src="oscillator.js"></script>
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
